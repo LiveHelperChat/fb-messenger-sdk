@@ -70,10 +70,10 @@ class Messenger
             UserProfile::FIRST_NAME,
             UserProfile::LAST_NAME,
             UserProfile::PROFILE_PIC,
-            UserProfile::LOCALE,
+            /*UserProfile::LOCALE,
             UserProfile::TIMEZONE,
             UserProfile::GENDER,
-            UserProfile::PAYMENT_ENABLED,
+            UserProfile::PAYMENT_ENABLED,*/
         ]
     ) {
         $query = [
