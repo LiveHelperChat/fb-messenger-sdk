@@ -116,23 +116,12 @@ class Messenger
     public function setStartedButton($payload)
     {
         $startedButton = new StartedButton($payload);
-        $setting = $this->buildSetting(
-            ThreadSetting::TYPE_CALL_TO_ACTIONS,
-            ThreadSetting::NEW_THREAD,
-            [$startedButton]
-        );
-
-        $this->postThreadSettings($setting);
+        $this->postThreadSettings(['get_started' => $startedButton]);
     }
 
     public function deleteStartedButton()
     {
-        $setting = $this->buildSetting(
-            ThreadSetting::TYPE_CALL_TO_ACTIONS,
-            ThreadSetting::NEW_THREAD
-        );
-
-        $this->deleteThreadSettings($setting);
+        $this->deleteThreadSettings(['fields' => ['get_started']]);
     }
 
     /**
@@ -190,7 +179,7 @@ class Messenger
      */
     private function postThreadSettings(array $setting)
     {
-        $this->client->post('/me/thread_settings', $setting);
+        $this->client->post('/me/messenger_profile', $setting);
     }
 
     /**
@@ -198,7 +187,7 @@ class Messenger
      */
     private function deleteThreadSettings(array $setting)
     {
-        $this->client->send('DELETE', '/me/thread_settings', $setting);
+        $this->client->send('DELETE', '/me/messenger_profile', $setting);
     }
 
     /**
