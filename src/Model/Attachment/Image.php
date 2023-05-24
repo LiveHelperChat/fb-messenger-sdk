@@ -6,7 +6,7 @@ use Tgallice\FBMessenger\Model\Attachment;
 
 class Image extends File
 {
-    protected $allowedExtensions = ['jpg', 'gif', 'png'];
+    protected $allowedExtensions = [];
     
     public function __construct($filePath)
     {
