@@ -102,6 +102,34 @@ class WebhookRequestHandler
         return isset($params['hub_challenge']) ? $params['hub_challenge'] : null;
     }
 
+    public function isValidInstagramCallbackRequest()
+    {
+        if (!$this->isValidHubSignature()) {
+            return false;
+        }
+
+        $decoded = $this->getDecodedBody();
+
+        $object = isset($decoded['object']) ? $decoded['object'] : null;
+        $entry = isset($decoded['entry']) ? $decoded['entry'] : null;
+
+        return $object === 'instagram' && null !== $entry;
+    }
+
+    public function isValidWhatsAppCallbackRequest()
+    {
+        if (!$this->isValidHubSignature()) {
+            return false;
+        }
+
+        $decoded = $this->getDecodedBody();
+
+        $object = isset($decoded['object']) ? $decoded['object'] : null;
+        $entry = isset($decoded['entry']) ? $decoded['entry'] : null;
+
+        return $object === 'whatsapp_business_account' && null !== $entry;
+    }
+
     /**
      * Check if the request is a valid webhook request
      *
