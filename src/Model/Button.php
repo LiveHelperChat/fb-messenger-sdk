@@ -1,7 +1,7 @@
 <?php
 
 namespace Tgallice\FBMessenger\Model;
-#[\ReturnTypeWillChange]
+
 abstract class Button implements \JsonSerializable
 {
     const TYPE_POSTBACK = 'postback';
@@ -36,6 +36,7 @@ abstract class Button implements \JsonSerializable
     /**
      * @inheritdoc
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         $json = [
