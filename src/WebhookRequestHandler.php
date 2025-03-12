@@ -56,7 +56,7 @@ class WebhookRequestHandler
      * @param $verifyToken
      * @param EventDispatcherInterface|null $dispatcher
      */
-    public function __construct($secret, $verifyToken, EventDispatcherInterface $dispatcher = null)
+    public function __construct($secret, $verifyToken, ?EventDispatcherInterface $dispatcher = null)
     {
         $this->secret = $secret;
         $this->verifyToken = $verifyToken;
